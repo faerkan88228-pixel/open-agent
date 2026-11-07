@@ -11,6 +11,29 @@ python3 -m http.server 4173 --bind 0.0.0.0
 # → http://localhost:4173
 ```
 
+## Продуктовый пакет
+
+Данные фракций живут в монорепо как `@afk/theme-infinity`
+(`packages/common/infinity`): токены `--infinity-*`, CSS-атмосфера,
+`InfinityThemeProvider` (React, `data-infinity-faction` + persist),
+`InfinityAtmosphere`, `FactionSwitcher`, `FactionSwatch`.
+
+```tsx
+import '@afk/theme-infinity/style.css';
+import { InfinityThemeProvider, useInfinityTheme } from '@afk/theme-infinity';
+
+<InfinityThemeProvider>…</InfinityThemeProvider>;
+
+const { code, setFaction, faction } = useInfinityTheme();
+```
+
+Страница-витрина ниже импортировать TypeScript не может, поэтому её данные
+генерируются из того же источника:
+
+```sh
+node --experimental-strip-types design/infinity-city/generate-tokens.mjs
+```
+
 ## Что внутри
 
 | Файл          | Роль                                                                                    |

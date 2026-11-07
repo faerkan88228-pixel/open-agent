@@ -2,6 +2,7 @@ import { IconButton } from '@afk/component';
 import { SidebarIcon } from '@blocksuite/icons/rc';
 import { useEffect, useState } from 'react';
 
+import { FactionSwitcher } from '@/components/faction-switcher';
 import AppSidebar from '@/components/ui/sidebar/sidebar';
 import { cn } from '@/lib/utils';
 import { useSidebarStore } from '@/store/sidebar';
@@ -44,8 +45,9 @@ export const SidebarLayout = ({
       {/* sidebar */}
       <AppSidebar id="app-sidebar" className={cn('flex flex-col', className)}>
         {/* Head spacer */}
-        <header className="w-full h-15 p-3 flex items-center">
-          <img src="/logo.svg" alt="logo" className="w-6 h-6" />
+        <header className="w-full h-15 p-3 flex items-center gap-2 pr-9">
+          <img src="/logo.svg" alt="logo" className="w-6 h-6 shrink-0" />
+          <FactionSwitcher />
         </header>
         <div className="flex-1 h-0">{sidebar}</div>
       </AppSidebar>

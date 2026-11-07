@@ -1,0 +1,458 @@
+/* ==========================================================================
+   @afk/theme-infinity — Infinity City faction tokens
+   --------------------------------------------------------------------------
+   Every faction declares the same set of `--infinity-*` custom properties.
+   The package never restyles global elements: it exposes tokens plus a few
+   opt-in utility classes (`.infinity-surface`, `.infinity-panel`,
+   `.infinity-accent`, `.infinity-fx`) so existing UI keeps working.
+
+   Switch factions by setting `data-infinity-faction` on <html> or <body>,
+   either statically or through `InfinityThemeProvider`.
+   ========================================================================== */
+
+/* ---------- defaults (INF) ---------- */
+:root,
+[data-infinity-faction='INF'] {
+  --infinity-faction: INF;
+  --infinity-accent: #d4af5f;
+  --infinity-accent-ink: #100c04;
+  --infinity-accent-soft: rgba(212, 175, 95, 0.12);
+  --infinity-accent-glow: rgba(212, 175, 95, 0.3);
+  --infinity-surface: #050508;
+  --infinity-surface-2: #0a0a11;
+  --infinity-surface-3: #101018;
+  --infinity-line: rgba(212, 175, 95, 0.22);
+  --infinity-font-display:
+    'Playfair Display', Georgia, 'Times New Roman', serif;
+  --infinity-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --infinity-font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --infinity-radius: 18px;
+  --infinity-radius-sm: 12px;
+  --infinity-grid-step: 92px;
+  --infinity-lift: 3px;
+  --infinity-stars: 0.55;
+  --infinity-grid: 0.16;
+  --infinity-sparks: 0;
+  --infinity-scan: 0;
+  --infinity-particles: 0;
+  --infinity-rings: 0;
+  --infinity-scratches: 0;
+  --infinity-grain: 0.05;
+}
+
+[data-infinity-faction='PRM'] {
+  --infinity-faction: PRM;
+  --infinity-accent: #ff5a1f;
+  --infinity-accent-ink: #170402;
+  --infinity-accent-soft: rgba(255, 90, 31, 0.12);
+  --infinity-accent-glow: rgba(255, 90, 31, 0.3);
+  --infinity-surface: #12040a;
+  --infinity-surface-2: #1b0710;
+  --infinity-surface-3: #23080f;
+  --infinity-line: rgba(255, 122, 61, 0.24);
+  --infinity-font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --infinity-radius: 8px;
+  --infinity-radius-sm: 6px;
+  --infinity-grid-step: 76px;
+  --infinity-lift: 2px;
+  --infinity-stars: 0.12;
+  --infinity-grid: 0.3;
+  --infinity-sparks: 1;
+  --infinity-scan: 0;
+  --infinity-particles: 0;
+  --infinity-rings: 0;
+  --infinity-scratches: 0;
+  --infinity-grain: 0.07;
+}
+
+[data-infinity-faction='DEF'] {
+  --infinity-faction: DEF;
+  --infinity-accent: #4fc3f7;
+  --infinity-accent-ink: #03121c;
+  --infinity-accent-soft: rgba(79, 195, 247, 0.12);
+  --infinity-accent-glow: rgba(79, 195, 247, 0.26);
+  --infinity-surface: #080d14;
+  --infinity-surface-2: #0b1420;
+  --infinity-surface-3: #101a28;
+  --infinity-line: rgba(79, 195, 247, 0.26);
+  --infinity-font-display: 'IBM Plex Mono', ui-monospace, monospace;
+  --infinity-radius: 3px;
+  --infinity-radius-sm: 2px;
+  --infinity-grid-step: 64px;
+  --infinity-lift: 0px;
+  --infinity-stars: 0.18;
+  --infinity-grid: 0.42;
+  --infinity-sparks: 0;
+  --infinity-scan: 1;
+  --infinity-particles: 0;
+  --infinity-rings: 0;
+  --infinity-scratches: 0;
+  --infinity-grain: 0.04;
+}
+
+[data-infinity-faction='UNT'] {
+  --infinity-faction: UNT;
+  --infinity-accent: #1de9b6;
+  --infinity-accent-ink: #02110d;
+  --infinity-accent-soft: rgba(29, 233, 182, 0.1);
+  --infinity-accent-glow: rgba(29, 233, 182, 0.26);
+  --infinity-surface: #030f0d;
+  --infinity-surface-2: #051915;
+  --infinity-surface-3: #07231d;
+  --infinity-line: rgba(29, 233, 182, 0.24);
+  --infinity-font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --infinity-radius: 16px;
+  --infinity-radius-sm: 10px;
+  --infinity-grid-step: 88px;
+  --infinity-lift: 3px;
+  --infinity-stars: 0.22;
+  --infinity-grid: 0.34;
+  --infinity-sparks: 0;
+  --infinity-scan: 0;
+  --infinity-particles: 1;
+  --infinity-rings: 0;
+  --infinity-scratches: 0;
+  --infinity-grain: 0.05;
+}
+
+[data-infinity-faction='EQB'] {
+  --infinity-faction: EQB;
+  --infinity-accent: #39ff88;
+  --infinity-accent-ink: #04120a;
+  --infinity-accent-soft: rgba(57, 255, 136, 0.1);
+  --infinity-accent-glow: rgba(162, 91, 255, 0.28);
+  --infinity-surface: #050b1e;
+  --infinity-surface-2: #081129;
+  --infinity-surface-3: #0b1734;
+  --infinity-line: rgba(162, 91, 255, 0.26);
+  --infinity-font-display:
+    'Playfair Display', Georgia, 'Times New Roman', serif;
+  --infinity-radius: 26px;
+  --infinity-radius-sm: 16px;
+  --infinity-grid-step: 120px;
+  --infinity-lift: 3px;
+  --infinity-stars: 0.75;
+  --infinity-grid: 0.1;
+  --infinity-sparks: 0;
+  --infinity-scan: 0;
+  --infinity-particles: 0;
+  --infinity-rings: 1;
+  --infinity-scratches: 0;
+  --infinity-grain: 0.05;
+}
+
+[data-infinity-faction='PKB'] {
+  --infinity-faction: PKB;
+  --infinity-accent: #d9a441;
+  --infinity-accent-ink: #120d05;
+  --infinity-accent-soft: rgba(217, 164, 65, 0.12);
+  --infinity-accent-glow: rgba(217, 164, 65, 0.24);
+  --infinity-surface: #0a0908;
+  --infinity-surface-2: #12100d;
+  --infinity-surface-3: #191612;
+  --infinity-line: rgba(217, 164, 65, 0.24);
+  --infinity-font-display:
+    'Playfair Display', Georgia, 'Times New Roman', serif;
+  --infinity-radius: 4px;
+  --infinity-radius-sm: 3px;
+  --infinity-grid-step: 72px;
+  --infinity-lift: 2px;
+  --infinity-stars: 0.05;
+  --infinity-grid: 0.08;
+  --infinity-sparks: 0;
+  --infinity-scan: 0;
+  --infinity-particles: 0;
+  --infinity-rings: 0;
+  --infinity-scratches: 1;
+  --infinity-grain: 0.11;
+}
+
+/* ---------- opt-in utilities ---------- */
+
+.infinity-surface {
+  background: var(--infinity-surface-2);
+  border-radius: var(--infinity-radius);
+  transition:
+    background-color 0.4s ease,
+    border-radius 0.4s ease;
+}
+
+.infinity-panel {
+  position: relative;
+  background:
+    linear-gradient(170deg, var(--infinity-accent-soft), transparent 60%),
+    var(--infinity-surface-2);
+  border: 1px solid var(--infinity-line);
+  border-radius: var(--infinity-radius);
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-radius 0.4s ease;
+}
+
+.infinity-panel:hover {
+  border-color: var(--infinity-accent);
+  transform: translateY(calc(var(--infinity-lift) * -1));
+  box-shadow: 0 24px 54px -34px var(--infinity-accent-glow);
+}
+
+.infinity-accent {
+  color: var(--infinity-accent);
+}
+
+.infinity-heading {
+  font-family: var(--infinity-font-display);
+}
+
+.infinity-mono {
+  font-family: var(--infinity-font-mono);
+}
+
+.infinity-focusable:focus-visible {
+  outline: 2px solid var(--infinity-accent);
+  outline-offset: 2px;
+}
+
+/**
+ * Atmosphere container. Renders layered effects driven purely by the
+ * `--infinity-*` intensity tokens: stardust, technical grid, reactor sparks,
+ * scanning line, digital particles, energy rings and scratched metal.
+ * Decorative only — it never intercepts pointer events.
+ */
+.infinity-fx {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+.infinity-fx::before,
+.infinity-fx::after {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  transition: opacity 0.6s ease;
+}
+
+/* stardust + grid */
+.infinity-fx::before {
+  opacity: var(--infinity-stars);
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 70% 12%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 42% 68%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 88% 54%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 12% 82%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 60% 88%, #fff 50%, transparent 51%);
+  background-size: 520px 520px;
+  animation: infinity-drift 90s linear infinite;
+}
+
+.infinity-fx::after {
+  opacity: var(--infinity-grid);
+  background-image:
+    linear-gradient(to right, var(--infinity-accent) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--infinity-accent) 1px, transparent 1px);
+  background-size: var(--infinity-grid-step) var(--infinity-grid-step);
+  mask-image: radial-gradient(circle at 50% 30%, #000, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, #000, transparent 72%);
+}
+
+/* faction-specific atmosphere lives on child nodes */
+.infinity-fx__sparks,
+.infinity-fx__scan,
+.infinity-fx__particles,
+.infinity-fx__rings,
+.infinity-fx__scratches {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.6s ease;
+}
+
+.infinity-fx__sparks {
+  opacity: var(--infinity-sparks);
+  background-image:
+    radial-gradient(
+      2px 2px at 10% 92%,
+      var(--infinity-accent) 50%,
+      transparent 51%
+    ),
+    radial-gradient(1px 1px at 24% 86%, #b87333 50%, transparent 51%),
+    radial-gradient(
+      1.5px 1.5px at 38% 96%,
+      var(--infinity-accent) 50%,
+      transparent 51%
+    ),
+    radial-gradient(
+      2px 2px at 55% 88%,
+      var(--infinity-accent) 50%,
+      transparent 51%
+    ),
+    radial-gradient(1px 1px at 68% 94%, #b87333 50%, transparent 51%),
+    radial-gradient(
+      1.5px 1.5px at 82% 84%,
+      var(--infinity-accent) 50%,
+      transparent 51%
+    );
+  background-size: 420px 220px;
+  background-position: bottom;
+  animation: infinity-rise 14s linear infinite;
+}
+
+.infinity-fx__scan {
+  inset: auto 0;
+  height: 24vh;
+  opacity: var(--infinity-scan);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--infinity-accent-glow) 45%,
+    transparent 55%
+  );
+  animation: infinity-scan 7s linear infinite;
+}
+
+.infinity-fx__particles {
+  opacity: var(--infinity-particles);
+  background-image:
+    radial-gradient(
+      1.5px 1.5px at 18% 24%,
+      var(--infinity-accent) 50%,
+      transparent 51%
+    ),
+    radial-gradient(1px 1px at 46% 58%, #38b6ff 50%, transparent 51%),
+    radial-gradient(
+      1.5px 1.5px at 72% 34%,
+      var(--infinity-accent) 50%,
+      transparent 51%
+    ),
+    radial-gradient(
+      1px 1px at 88% 74%,
+      var(--infinity-accent) 50%,
+      transparent 51%
+    ),
+    radial-gradient(1px 1px at 32% 82%, #38b6ff 50%, transparent 51%),
+    radial-gradient(
+      1.5px 1.5px at 62% 92%,
+      var(--infinity-accent) 50%,
+      transparent 51%
+    );
+  background-size: 300px 300px;
+  animation: infinity-drift 60s linear infinite;
+}
+
+.infinity-fx__rings {
+  opacity: var(--infinity-rings);
+  background-image:
+    radial-gradient(
+      circle at 50% 50%,
+      transparent 58%,
+      var(--infinity-accent-soft) 59% 60%,
+      transparent 61%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      transparent 72%,
+      var(--infinity-accent-soft) 73% 74%,
+      transparent 75%
+    );
+  background-repeat: no-repeat;
+  background-size:
+    60% 60%,
+    88% 88%;
+  background-position: center;
+  animation: infinity-breathe 9s ease-in-out infinite;
+}
+
+.infinity-fx__scratches {
+  opacity: var(--infinity-scratches);
+  background-image:
+    repeating-linear-gradient(
+      74deg,
+      transparent 0 18px,
+      rgba(255, 255, 255, 0.18) 18px 19px
+    ),
+    repeating-linear-gradient(
+      112deg,
+      transparent 0 26px,
+      rgba(255, 255, 255, 0.12) 26px 27px
+    );
+}
+
+@keyframes infinity-drift {
+  to {
+    background-position: 520px 520px;
+  }
+}
+
+@keyframes infinity-rise {
+  from {
+    background-position: 0 0;
+    opacity: 0.1;
+  }
+  50% {
+    opacity: var(--infinity-sparks);
+  }
+  to {
+    background-position: 0 -220px;
+    opacity: 0.05;
+  }
+}
+
+@keyframes infinity-scan {
+  from {
+    transform: translateY(-30vh);
+  }
+  to {
+    transform: translateY(130vh);
+  }
+}
+
+@keyframes infinity-breathe {
+  50% {
+    opacity: calc(var(--infinity-rings) * 0.4);
+    transform: scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .infinity-fx::before,
+  .infinity-fx::after,
+  .infinity-fx__sparks,
+  .infinity-fx__scan,
+  .infinity-fx__particles {
+    opacity: var(--infinity-particles);
+    background-image:
+      radial-gradient(
+        1.5px 1.5px at 18% 24%,
+        var(--infinity-accent) 50%,
+        transparent 51%
+      ),
+      radial-gradient(1px 1px at 46% 58%, #38b6ff 50%, transparent 51%),
+      radial-gradient(
+        1.5px 1.5px at 72% 34%,
+        var(--infinity-accent) 50%,
+        transparent 51%
+      ),
+      radial-gradient(
+        1px 1px at 88% 74%,
+        var(--infinity-accent) 50%,
+        transparent 51%
+      ),
+      radial-gradient(1px 1px at 32% 82%, #38b6ff 50%, transparent 51%),
+      radial-gradient(
+        1.5px 1.5px at 62% 92%,
+        var(--infinity-accent) 50%,
+        transparent 51%
+      );
+    background-size: 300px 300px;
+    animation: infinity-drift 60s linear infinite;
+  }
+
+  .infinity-fx__rings {
+    animation: none;
+  }
+}

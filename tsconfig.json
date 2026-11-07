@@ -123,6 +123,7 @@
     { "path": "./packages/common/env" },
     { "path": "./packages/common/error" },
     { "path": "./packages/common/graphql" },
+    { "path": "./packages/common/infinity" },
     { "path": "./packages/frontend/app" },
     { "path": "./packages/frontend/component" },
     { "path": "./packages/frontend/electron" },

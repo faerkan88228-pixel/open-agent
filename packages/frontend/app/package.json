@@ -11,6 +11,7 @@
     "@afk/component": "workspace:*",
     "@afk/error": "workspace:*",
     "@afk/graphql": "workspace:*",
+    "@afk/theme-infinity": "workspace:*",
     "@blocksuite/icons": "^2.2.15",
     "@lixpi/markdown-stream-parser": "0.0.3-33",
     "@tailwindcss/typography": "^0.5.16",
