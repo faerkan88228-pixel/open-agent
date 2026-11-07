@@ -1,11 +1,13 @@
 import './index.css';
 import '@afk/component/theme';
+import '@afk/theme-infinity/style.css';
 
 import { ConfirmModalProvider } from '@afk/component';
 import { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router';
 
 import { AuthGuard } from './components/auth-guard';
+import { InfinityThemeRoot } from './components/faction-switcher';
 import { ChatPage } from './pages/chats/chat';
 import { ChatPlaybackPage } from './pages/chats/chat-playback';
 import { ChatsDashboard } from './pages/chats/chats-dashboard';
@@ -63,57 +65,59 @@ function App() {
   }, [open]);
 
   return (
-    <ConfirmModalProvider>
-      <Routes>
-        <Route path="/sign-in" element={<SignInPage />} />
-        <Route path="/magic-link" element={<MagicLinkPage />} />
-        <Route
-          path="/chats/*"
-          element={
-            <AuthGuard>
-              <ChatsPage />
-            </AuthGuard>
-          }
-        />
-        <Route
-          path="/library/*"
-          element={
-            <AuthGuard>
-              <LibraryPage />
-            </AuthGuard>
-          }
-        />
-        <Route
-          path="/settings"
-          element={
-            <AuthGuard>
-              <div className="p-8">Settings (coming soon)</div>
-            </AuthGuard>
-          }
-        />
-        <Route path="/doc-edit-test" element={<DocEditTest />} />
-        <Route path="/onboarding" element={<OnboardingPage />} />
-        <Route
-          path="/"
-          element={
-            <AuthGuard>
-              <HomePage />
-            </AuthGuard>
-          }
-        />
-        <Route
-          path="/redirect-proxy"
-          element={<RedirectProxyPage />}
-          loader={redirectProxyLoader}
-        />
-        <Route
-          path="/oauth/login"
-          element={<OAuthLoginPage />}
-          loader={oauthLoginLoader}
-        />
-        <Route path="/oauth/callback" element={<OAuthCallbackPage />} />
-      </Routes>
-    </ConfirmModalProvider>
+    <InfinityThemeRoot>
+      <ConfirmModalProvider>
+        <Routes>
+          <Route path="/sign-in" element={<SignInPage />} />
+          <Route path="/magic-link" element={<MagicLinkPage />} />
+          <Route
+            path="/chats/*"
+            element={
+              <AuthGuard>
+                <ChatsPage />
+              </AuthGuard>
+            }
+          />
+          <Route
+            path="/library/*"
+            element={
+              <AuthGuard>
+                <LibraryPage />
+              </AuthGuard>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <AuthGuard>
+                <div className="p-8">Settings (coming soon)</div>
+              </AuthGuard>
+            }
+          />
+          <Route path="/doc-edit-test" element={<DocEditTest />} />
+          <Route path="/onboarding" element={<OnboardingPage />} />
+          <Route
+            path="/"
+            element={
+              <AuthGuard>
+                <HomePage />
+              </AuthGuard>
+            }
+          />
+          <Route
+            path="/redirect-proxy"
+            element={<RedirectProxyPage />}
+            loader={redirectProxyLoader}
+          />
+          <Route
+            path="/oauth/login"
+            element={<OAuthLoginPage />}
+            loader={oauthLoginLoader}
+          />
+          <Route path="/oauth/callback" element={<OAuthCallbackPage />} />
+        </Routes>
+      </ConfirmModalProvider>
+    </InfinityThemeRoot>
   );
 }
 
