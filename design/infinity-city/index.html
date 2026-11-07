@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinity City — Skill Intelligence Layer</title>
+    <meta
+      name="description"
+      content="Prometheus Project: Infinity — многоуровневая система скиллов и визуальная карта шести фракций Infinity City."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-faction="INF">
+    <div class="fx" aria-hidden="true">
+      <div class="fx__stars"></div>
+      <div class="fx__grid"></div>
+      <div class="fx__glow fx__glow--a"></div>
+      <div class="fx__glow fx__glow--b"></div>
+      <div class="fx__sparks"></div>
+      <div class="fx__scan"></div>
+    </div>
+
+    <header class="topbar">
+      <a class="brand" href="#top">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none">
+            <circle
+              cx="20"
+              cy="20"
+              r="18"
+              stroke="currentColor"
+              stroke-width="1"
+              opacity=".45"
+            />
+            <circle
+              cx="20"
+              cy="20"
+              r="12"
+              stroke="currentColor"
+              stroke-width="1"
+              opacity=".7"
+            />
+            <path
+              d="M20 2v36M2 20h36"
+              stroke="currentColor"
+              stroke-width="1"
+              opacity=".3"
+            />
+            <circle cx="20" cy="20" r="3.5" fill="currentColor" />
+          </svg>
+        </span>
+        <span class="brand__text">
+          <strong>Prometheus Project</strong>
+          <em>Infinity</em>
+        </span>
+      </a>
+
+      <nav class="topnav" aria-label="Основная навигация">
+        <a href="#architecture">Архитектура</a>
+        <a href="#core">Системные скиллы</a>
+        <a href="#branches">Ветки</a>
+        <a href="#flow">Поток</a>
+        <a href="#factions">Фракции</a>
+      </nav>
+
+      <div class="topbar__right">
+        <div class="faction-switch" role="group" aria-label="Выбор фракции">
+          <button
+            class="chip is-active"
+            data-set-faction="INF"
+            aria-pressed="true"
+          >
+            INF
+          </button>
+          <button class="chip" data-set-faction="PRM" aria-pressed="false">
+            PRM
+          </button>
+          <button class="chip" data-set-faction="DEF" aria-pressed="false">
+            DEF
+          </button>
+          <button class="chip" data-set-faction="UNT" aria-pressed="false">
+            UNT
+          </button>
+          <button class="chip" data-set-faction="EQB" aria-pressed="false">
+            EQB
+          </button>
+          <button class="chip" data-set-faction="PKB" aria-pressed="false">
+            PKB
+          </button>
+        </div>
+        <div class="status-pill"><i></i> Core Runtime online</div>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero section">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__inner">
+          <div class="badge">
+            <span class="badge__dot"></span>
+            Skill Intelligence Layer · v∞
+          </div>
+          <h1 class="hero__title">
+            Скиллы — это не команды.
+            <span>Это нервная система проекта.</span>
+          </h1>
+          <p class="hero__lead">
+            Prometheus Project: Infinity — динамическая среда, где новые
+            возможности добавляются как новые узлы, старые навыки
+            переиспользуются, а сложные задачи собираются из цепочек скиллов.
+            Шесть фракций Infinity City задают визуальные и идеологические
+            территории внутри одной экосистемы.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#architecture"
+              >Открыть архитектуру</a
+            >
+            <a class="btn btn--ghost" href="#factions">Карта фракций</a>
+          </div>
+
+          <dl class="metrics">
+            <div class="metric">
+              <dt>Узлов-скиллов</dt>
+              <dd>128<span>+</span></dd>
+              <p>каталог возможностей</p>
+            </div>
+            <div class="metric">
+              <dt>Средняя цепочка</dt>
+              <dd>4.2</dd>
+              <p>скилла на задачу</p>
+            </div>
+            <div class="metric">
+              <dt>Маршрутизация</dt>
+              <dd>84<span>ms</span></dd>
+              <p>Trigger → Router</p>
+            </div>
+            <div class="metric">
+              <dt>Фракций</dt>
+              <dd>6</dd>
+              <p>визуальных идеологий</p>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ARCHITECTURE DIAGRAM -->
+      <section class="section" id="architecture">
+        <div class="section__head">
+          <p class="eyebrow">01 — Архитектура</p>
+          <h2>Skill Intelligence Layer</h2>
+          <p class="section__sub">
+            Четыре слоя: от создания навыка до его исполнения в Prometheus Core
+            Runtime. Нажмите на узел, чтобы увидеть его роль.
+          </p>
+        </div>
+
+        <div class="diagram-wrap">
+          <div
+            class="diagram"
+            role="group"
+            aria-label="Схема Skill Intelligence Layer"
+          >
+            <div class="d-layer d-layer--single">
+              <div class="node node--root" data-info="arch-root">
+                <span class="node__kicker">Project</span>
+                <span class="node__name">Prometheus Project</span>
+                <span class="node__tag">Infinity</span>
+              </div>
+            </div>
+
+            <div class="d-connector" aria-hidden="true"><i></i></div>
+
+            <div class="d-layer d-layer--single">
+              <div class="node node--lead" data-info="arch-sil">
+                <span class="node__kicker">Layer 1</span>
+                <span class="node__name">Skill Intelligence Layer</span>
+                <span class="node__tag">создание · поиск · триггер</span>
+              </div>
+            </div>
+
+            <div class="d-branch d-branch--3" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </div>
+
+            <div class="d-layer d-layer--three">
+              <div class="node" data-info="arch-creator">
+                <span class="node__icon">✦</span>
+                <span class="node__name">Skill Creator</span>
+                <span class="node__desc">создание новых скиллов</span>
+              </div>
+              <div class="node" data-info="arch-kb">
+                <span class="node__icon">◈</span>
+                <span class="node__name">Skill Knowledge Base</span>
+                <span class="node__desc">RAG / каталог возможностей</span>
+              </div>
+              <div class="node" data-info="arch-trigger">
+                <span class="node__icon">⚡</span>
+                <span class="node__name">Skill Trigger</span>
+                <span class="node__desc">автоматическое обнаружение</span>
+              </div>
+            </div>
+
+            <div class="d-merge d-merge--3" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </div>
+
+            <div class="d-layer d-layer--single">
+              <div class="node node--router" data-info="arch-router">
+                <span class="node__kicker">Dispatcher</span>
+                <span class="node__name">Skill Router</span>
+                <span class="node__desc"
+                  >выбор нужного навыка и сборка цепочки</span
+                >
+              </div>
+            </div>
+
+            <div class="d-branch d-branch--3" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </div>
+
+            <div class="d-layer d-layer--three">
+              <div
+                class="node node--branch node--design"
+                data-info="arch-design"
+              >
+                <span class="node__name">UI/UX Skills</span>
+                <span class="node__desc">дизайн, интерфейс</span>
+              </div>
+              <div class="node node--branch node--eng" data-info="arch-eng">
+                <span class="node__name">Engineering Skills</span>
+                <span class="node__desc">код, архитектура</span>
+              </div>
+              <div class="node node--branch node--agent" data-info="arch-agent">
+                <span class="node__name">AI Agent Skills</span>
+                <span class="node__desc"
+                  >Agent City, роли, память, инструменты</span
+                >
+              </div>
+            </div>
+
+            <div class="d-merge d-merge--3" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </div>
+
+            <div class="d-layer d-layer--single">
+              <div class="node node--core" data-info="arch-core">
+                <span class="node__kicker">Runtime</span>
+                <span class="node__name">Prometheus Core Runtime</span>
+                <span class="node__desc"
+                  >исполнение, валидация, обновление знаний</span
+                >
+              </div>
+            </div>
+
+            <div class="d-branch d-branch--3" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </div>
+
+            <div class="d-layer d-layer--three">
+              <div class="node node--io" data-info="arch-request">
+                <span class="node__name">User Request</span>
+                <span class="node__desc">запрос пользователя</span>
+              </div>
+              <div class="node node--io" data-info="arch-context">
+                <span class="node__name">Project Context</span>
+                <span class="node__desc">осознание контекста проекта</span>
+              </div>
+              <div class="node node--io" data-info="arch-tools">
+                <span class="node__name">External Tools</span>
+                <span class="node__desc">APIs / Repos / Models / Storage</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="diagram-panel" id="arch-panel" aria-live="polite">
+            <p class="diagram-panel__hint">Выберите узел схемы</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- CORE SKILLS -->
+      <section class="section" id="core">
+        <div class="section__head">
+          <p class="eyebrow">02 — Системные скиллы</p>
+          <h2>Три ядра Skill Intelligence</h2>
+          <p class="section__sub">
+            Три системных скилла обеспечивают самоподдержку среды: создание,
+            поиск и автоматическую активацию.
+          </p>
+        </div>
+
+        <div class="cards cards--3">
+          <article class="card">
+            <span class="card__num">01</span>
+            <h3>Skill Builder</h3>
+            <p class="card__quote">
+              Создаёт новые скиллы под задачи Prometheus.
+            </p>
+            <ul class="list">
+              <li>анализ требований</li>
+              <li>генерация структуры скилла</li>
+              <li>описание входов / выходов</li>
+              <li>интеграция в базу скиллов</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <span class="card__num">02</span>
+            <h3>Skill RAG Analyzer</h3>
+            <p class="card__quote">«Мозг» поиска возможностей.</p>
+            <ul class="list">
+              <li>анализ текущего запроса</li>
+              <li>поиск похожих скиллов</li>
+              <li>определение необходимых компетенций</li>
+              <li>предложение цепочки выполнения</li>
+            </ul>
+            <div class="example">
+              <p class="example__label">Запрос</p>
+              <p class="example__query">
+                «Создать новый экран фракции Infinity»
+              </p>
+              <div class="chain">
+                <span>UI Design</span><b>+</b><span>Faction Theme</span><b>+</b>
+                <span>Responsive Layout</span><b>+</b><span>Localization</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <span class="card__num">03</span>
+            <h3>Skill Trigger Detector</h3>
+            <p class="card__quote">Автоматическая активация.</p>
+            <ul class="list">
+              <li>тип задачи</li>
+              <li>контекст проекта</li>
+              <li>необходимые инструменты</li>
+            </ul>
+            <div class="example">
+              <p class="example__label">Запрос</p>
+              <p class="example__query">«Создай архитектуру Agent City»</p>
+              <div class="chain">
+                <span>Architecture</span><b>+</b><span>Diagram Generation</span
+                ><b>+</b>
+                <span>System Analysis</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- BRANCHES -->
+      <section class="section" id="branches">
+        <div class="section__head">
+          <p class="eyebrow">03 — Специализированные ветки</p>
+          <h2>Четыре интеллекта</h2>
+          <p class="section__sub">
+            Каждая ветка — отдельное дерево навыков со своим набором подскиллов.
+          </p>
+        </div>
+
+        <div class="branches">
+          <article class="branch-card">
+            <header>
+              <span class="branch-card__tag">Design Intelligence</span>
+              <h3>Luxury UI Skill</h3>
+            </header>
+            <ul class="tree">
+              <li>Mobile First</li>
+              <li>Adaptive Layout</li>
+              <li>Faction Visual System</li>
+              <li>Animation System</li>
+              <li>Design Tokens</li>
+            </ul>
+          </article>
+
+          <article class="branch-card">
+            <header>
+              <span class="branch-card__tag">Engineering Intelligence</span>
+              <h3>Architecture Skill</h3>
+            </header>
+            <ul class="tree">
+              <li>Frontend Architecture</li>
+              <li>Backend Architecture</li>
+              <li>Database Design</li>
+              <li>Security</li>
+              <li>Deployment</li>
+            </ul>
+          </article>
+
+          <article class="branch-card">
+            <header>
+              <span class="branch-card__tag">Agent Intelligence</span>
+              <h3>Agent Skill Framework</h3>
+            </header>
+            <ul class="tree">
+              <li>Agent Creation</li>
+              <li>Personality Layer</li>
+              <li>Memory Layer</li>
+              <li>Tool Access</li>
+              <li>Multi-Agent Coordination</li>
+            </ul>
+          </article>
+
+          <article class="branch-card">
+            <header>
+              <span class="branch-card__tag">Media Generation</span>
+              <h3>Creative AI Skills</h3>
+            </header>
+            <ul class="tree">
+              <li>Image Generation</li>
+              <li>Snapshot Moment</li>
+              <li>Scene Continuity</li>
+              <li>3D / 2.5D World</li>
+              <li>Avatar System</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- FLOW -->
+      <section class="section" id="flow">
+        <div class="section__head">
+          <p class="eyebrow">04 — Поток выполнения</p>
+          <h2>От запроса до обновления знаний</h2>
+          <p class="section__sub">
+            Замкнутый цикл: результат задачи возвращается в базу знаний и
+            усиливает следующую цепочку.
+          </p>
+        </div>
+
+        <ol class="flow">
+          <li><span>01</span>User Request</li>
+          <li><span>02</span>Context Analyzer</li>
+          <li><span>03</span>Skill Trigger</li>
+          <li><span>04</span>RAG Skill Search</li>
+          <li><span>05</span>Skill Router</li>
+          <li><span>06</span>Execution Chain</li>
+          <li><span>07</span>Validation</li>
+          <li><span>08</span>Result</li>
+          <li class="flow__loop"><span>09</span>Knowledge Update</li>
+        </ol>
+
+        <p class="flow__note">
+          <b>Принцип:</b> новые возможности добавляются как новые узлы, старые
+          скиллы переиспользуются, сложные задачи собираются из цепочек навыков
+          — проект постепенно становится самообучающейся инженерной средой.
+        </p>
+      </section>
+
+      <!-- FACTIONS -->
+      <section class="section" id="factions">
+        <div class="section__head">
+          <p class="eyebrow">05 — Infinity City</p>
+          <h2>Шесть фракций — шесть идеологий</h2>
+          <p class="section__sub">
+            Фракция — это не цветовая тема, а отдельная атмосфера и личная
+            территория пользователя внутри единой экосистемы. Выберите фракцию,
+            чтобы примерить её визуальную систему на весь интерфейс.
+          </p>
+        </div>
+
+        <div class="factions" id="faction-cards"></div>
+
+        <div class="matrix-wrap">
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th>Фракция</th>
+                <th>Главная идея</th>
+                <th>Визуальное ощущение</th>
+                <th>Роль в системе</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-faction-row="INF">
+                <td><b>INF</b> Нация «Инфинити»</td>
+                <td>Бесконечность</td>
+                <td>Космическая роскошь</td>
+                <td>Центр вселенной</td>
+              </tr>
+              <tr data-faction-row="PRM">
+                <td><b>PRM</b> Корпорация «Прометей»</td>
+                <td>Создание</td>
+                <td>Корпоративный огонь</td>
+                <td>Двигатель развития</td>
+              </tr>
+              <tr data-faction-row="DEF">
+                <td><b>DEF</b> Корпус «Стражи Бесконечности»</td>
+                <td>Защита</td>
+                <td>Военный sci-fi</td>
+                <td>Защитный контур</td>
+              </tr>
+              <tr data-faction-row="UNT">
+                <td><b>UNT</b> Академия «Юнити»</td>
+                <td>Знания</td>
+                <td>Научная технология</td>
+                <td>Интеллект цивилизации</td>
+              </tr>
+              <tr data-faction-row="EQB">
+                <td><b>EQB</b> Орден «Эквилибриум»</td>
+                <td>Баланс</td>
+                <td>Мистический космос</td>
+                <td>Баланс системы</td>
+              </tr>
+              <tr data-faction-row="PKB">
+                <td><b>PKB</b> Клан «Острые Козырьки»</td>
+                <td>Свобода</td>
+                <td>Киберпанк-андеграунд</td>
+                <td>Независимая сила внутри города</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__brand">
+        <span>Prometheus Project: Infinity</span>
+        <em>Skill Intelligence Layer · Infinity City</em>
+      </div>
+      <p class="footer__quote">
+        «Скиллы работают как динамическая нервная система проекта.»
+      </p>
+    </footer>
+
+    <script src="./factions.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
